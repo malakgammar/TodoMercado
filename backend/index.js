@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import cors from "cors"; 
 
 import authRoute from './routes/authRoute.js';
+import messageRoute from "./routes/messageRoute.js";
 
 const app = express();
 
@@ -29,3 +30,4 @@ mongoose
   .catch((error) => console.log(error));
 
 app.use('/auth', authRoute);
+app.use('/message', messageRoute);

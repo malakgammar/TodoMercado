@@ -1,0 +1,402 @@
+/* ===== VARIABLES ===== */
+:root {
+    --rouge-principal: #E63946;
+    --rouge-clair: #F77F88;
+    --blanc: #FFFFFF;
+    --gris-clair: #F8F9FA;
+    --texte-fonce: #2B2D42;
+    --ombre: rgba(230, 57, 70, 0.15);
+    --vert-succes: #06D6A0;
+    --orange-warning: #F77F00;
+}
+body {
+    padding-top: 120px; 
+}
+
+/* ===== CONTAINER PRINCIPAL ===== */
+.profile-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    animation: fadeIn 0.5s ease;
+}
+
+/* ===== HEADER PROFILE ===== */
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, var(--rouge-principal) 0%, var(--rouge-clair) 100%);
+    padding: 2rem 3rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 25px var(--ombre);
+    transition: transform 0.3s ease;
+}
+
+.profile-header:hover {
+    transform: translateY(-5px);
+}
+
+.profile-header h1 {
+    color: var(--blanc);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    animation: slideInLeft 0.6s ease;
+}
+
+.cart-icon {
+    background-color: var(--blanc);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cart-icon:hover {
+    transform: scale(1.15) rotate(10deg);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.cart-icon svg {
+    color: var(--rouge-principal);
+    transition: color 0.3s ease;
+}
+
+.cart-icon:hover svg {
+    color: var(--rouge-clair);
+}
+
+/* ===== INFORMATIONS PROFIL ===== */
+.profile-info {
+    background-color: var(--blanc);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px var(--ombre);
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.profile-info:hover {
+    box-shadow: 0 8px 30px rgba(230, 57, 70, 0.2);
+}
+
+.profile-info p {
+    font-size: 1.1rem;
+    color: var(--texte-fonce);
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    border-left: 4px solid var(--rouge-principal);
+    background-color: var(--gris-clair);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.profile-info p:hover {
+    background-color: rgba(230, 57, 70, 0.05);
+    transform: translateX(5px);
+}
+
+.profile-info p strong {
+    color: var(--rouge-principal);
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
+/* ===== MODE ÉDITION ===== */
+.profile-info div {
+    margin-bottom: 1.5rem;
+}
+
+.profile-info label {
+    display: block;
+    color: var(--rouge-principal);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.profile-info input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--gris-clair);
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    background-color: var(--gris-clair);
+}
+
+.profile-info input:focus {
+    outline: none;
+    border-color: var(--rouge-principal);
+    background-color: var(--blanc);
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+    transform: translateY(-2px);
+}
+
+/* ===== BOUTONS ===== */
+.profile-info button,
+.commande-card button {
+    background-color: var(--rouge-principal);
+    color: var(--blanc);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    box-shadow: 0 4px 15px var(--ombre);
+}
+
+.profile-info button:hover,
+.commande-card button:hover {
+    background-color: var(--rouge-clair);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(230, 57, 70, 0.3);
+}
+
+.profile-info button:active,
+.commande-card button:active {
+    transform: translateY(-1px);
+}
+
+.profile-info button:nth-child(2) {
+    background-color: var(--gris-clair);
+    color: var(--texte-fonce);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info button:nth-child(2):hover {
+    background-color: #e0e0e0;
+}
+
+/* ===== MESSAGES ===== */
+.success-message {
+    background-color: var(--vert-succes);
+    color: var(--blanc);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    text-align: center;
+    font-weight: 600;
+    animation: slideDown 0.5s ease;
+    box-shadow: 0 4px 15px rgba(6, 214, 160, 0.2);
+}
+
+.error {
+    background-color: var(--rouge-principal);
+    color: var(--blanc);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    text-align: center;
+    font-weight: 600;
+    animation: shake 0.5s ease;
+    box-shadow: 0 4px 15px var(--ombre);
+}
+
+/* ===== AUCUNE COMMANDE ===== */
+.no-orders {
+    background-color: var(--blanc);
+    padding: 3rem;
+    border-radius: 20px;
+    text-align: center;
+    color: var(--texte-fonce);
+    font-size: 1.2rem;
+    box-shadow: 0 5px 20px var(--ombre);
+    margin-bottom: 2rem;
+}
+
+/* ===== CARTES COMMANDES ===== */
+.commande-card {
+    background-color: var(--blanc);
+    padding: 2rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 20px var(--ombre);
+    border-left: 6px solid var(--rouge-principal);
+    transition: all 0.3s ease;
+    animation: slideUp 0.5s ease;
+}
+
+.commande-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(230, 57, 70, 0.25);
+}
+
+.commande-card p {
+    font-size: 1.1rem;
+    color: var(--texte-fonce);
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
+}
+
+.commande-card p strong {
+    color: var(--rouge-principal);
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
+.commande-card ul {
+    list-style: none;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.commande-card li {
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    background-color: var(--gris-clair);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border-left: 3px solid var(--rouge-clair);
+}
+
+.commande-card li:hover {
+    background-color: rgba(230, 57, 70, 0.05);
+    transform: translateX(5px);
+}
+
+.commande-card button {
+    background-color: var(--rouge-principal);
+    margin-top: 1.5rem;
+}
+
+.commande-card button:hover {
+    background-color: #c62d38;
+}
+
+/* ===== MESSAGE DE REMERCIEMENT ===== */
+.thank-you-message {
+    background: var(--gris-clair);
+    color: var(--texte-fonce);
+    padding: 3rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 25px var(--rouge-clair);
+    margin-top: 3rem;
+    animation: fadeIn 1s ease;
+}
+
+.thank-you-message p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin: 0;
+    font-weight: 400;
+}
+
+.thank-you-message strong {
+    font-weight: 700;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 1rem;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .profile-header h1 {
+        font-size: 2rem;
+    }
+
+    .cart-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .profile-info,
+    .commande-card,
+    .thank-you-message {
+        padding: 1.5rem;
+    }
+
+    .profile-info button {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .commande-card ul {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .profile-info p,
+    .commande-card p {
+        font-size: 1rem;
+    }
+
+    .thank-you-message p {
+        font-size: 1rem;
+    }
+}

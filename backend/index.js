@@ -4,7 +4,13 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cors from "cors"; 
 
+import userRoute from "./routes/userRoute.js";
+import commandeRoute from './routes/commandeRoute.js';
+import messageRoute from "./routes/messageRoute.js";
+import categoryRoute from "./routes/categoryRoute.js";
+import productRoute from "./routes/productRoute.js";
 import authRoute from './routes/authRoute.js';
+import panierRoute from "./routes/panierRoute.js";
 
 const app = express();
 
@@ -28,4 +34,10 @@ mongoose
   })
   .catch((error) => console.log(error));
 
+app.use("/user", userRoute);
+app.use('/commande', commandeRoute);
+app.use('/message', messageRoute);
+app.use('/category', categoryRoute);
+app.use('/product', productRoute);
 app.use('/auth', authRoute);
+app.use('/panier', panierRoute);

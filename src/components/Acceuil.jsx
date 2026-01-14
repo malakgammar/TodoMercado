@@ -5,11 +5,17 @@ import './Acceuil.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Slider from 'react-slick';
-
+import { useAuth } from './AuthContext'; 
+import { FaBars, FaTimes, FaStar, FaRegStar  } from 'react-icons/fa';
 export const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { logout, user } = useAuth();
     const navigate = useNavigate();
 
+    const handleLogout = async () => {
+        await logout(); 
+        navigate('/'); 
+    };
 
     return (
         <header className="header">
@@ -17,15 +23,21 @@ export const Header = () => {
                 <Link to="/"><img src="/logo.png" alt="Logo TodoMercado" /></Link>
             </div>
             <button className="menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                {isMenuOpen ? '✖' : '☰'}
+                  {isMenuOpen ? <FaTimes /> : <FaBars />}
             </button>
             <nav className={`nav ${isMenuOpen ? 'open' : ''}`}>
                 <ul>
                     <li><Link to="/product">Produits</Link></li>
-                    <li><a href="#coupons">À Propos</a></li>
+                    <li><a href="#historique">À Propos</a></li>
                     <li><a href="#temoignages">Contact</a></li>
-                    <li><Link to="/authentification">Profil</Link></li>
-                    
+                    <li><Link to="/profile">Profil</Link></li>
+                    {user && (
+                        <li>
+                            <button onClick={handleLogout} className="btn btn-link logout-btn">
+                                Déconnexion
+                            </button>
+                        </li>
+                    )}
                 </ul>
             </nav>
         </header>
@@ -86,17 +98,11 @@ export const Acceuil = () => {
         setNewMessage({ ...newMessage, rating });
     };
 
-    const provinces = [
-        { name: "Casablanca", location: "Centre-Ouest" },
-        { name: "Rabat", location: "Nord-Ouest" },
-        { name: "Marrakech", location: "Centre" },
-        { name: "Fès", location: "Nord" }
-    ];
 
     return (
         <div className="acceuil">
             <div className="carousel">
-                <Slider dots infinite speed={500} slidesToShow={1} slidesToScroll={1} autoplay autoplaySpeed={2000}>
+                <Slider dots infinite speed={300} slidesToShow={1} slidesToScroll={1} autoplay autoplaySpeed={2000}>
                     <div><img src="/carou1.png" alt="Carrousel 1" /></div>
                     <div><img src="/carou2.png" alt="Carrousel 2" /></div>
                     <div><img src="/carou3.png" alt="Carrousel 3" /></div>
@@ -108,9 +114,9 @@ export const Acceuil = () => {
                     <h2>Bienvenue chez</h2>
                     <h1>TodoMercado</h1>
                     <p>Découvrez nos produits en gros et nos meilleures offres!</p>
-                    <button onClick={handleProductClick} className="cta-button">
+                    <center><button onClick={handleProductClick} className="cta-button">
                         Voir les produits
-                    </button>
+                    </button></center>
                 </section>
 
                 <section id="historique" className="historique" data-aos="fade-up">
@@ -122,32 +128,7 @@ export const Acceuil = () => {
                     </p>
                 </section>
 
-                <section className="provinces">
-                    <h2>Nos Provinces</h2>
-                    <div className="province-boxes">
-                        {provinces.map((province) => (
-                            <div className="province-box" key={province.name} data-aos="zoom-in">
-                                <h3>{province.name}</h3>
-                                <p><strong>Localisation : </strong>{province.location}</p>
-                            </div>
-                        ))}
-                    </div>
-                </section>
 
-                <section className="missions">
-                    <h2>Nos Missions</h2>
-                    <div className="mission-boxes">
-                        {['Fournir une expérience d\'achat exceptionnelle', 
-                          'Promouvoir des pratiques durables', 
-                          'Soutenir les communautés locales', 
-                          'Offrir un service client de qualité'].map((mission) => (
-                            <div className="mission-box" key={mission} data-aos="zoom-in">
-                                <h3>{mission}</h3>
-                                <p>Nous nous engageons à réaliser cette mission pour le bien de nos clients et de la société.</p>
-                            </div>
-                        ))}
-                    </div>
-                </section>
 
                 <section className="valeurs">
                     <h2>Nos Valeurs</h2>
@@ -168,7 +149,6 @@ export const Acceuil = () => {
                             messages.map(({ _id, name, email, message, rating }) => (
                                 <div className="temoignage-box" data-aos="zoom-in" key={_id}>
                                     <div className="profile">
-                                        <img src="/photoProfile.png" alt={name} className="avatar" />
                                         <div className="profile-info">
                                             <h3>{name}</h3>
                                             <p className="email">{email}</p>
@@ -193,13 +173,17 @@ export const Acceuil = () => {
                         <input type="email" placeholder="Email" value={newMessage.email} onChange={(e) => setNewMessage({ ...newMessage, email: e.target.value })} required />
                         <textarea placeholder="Votre message" value={newMessage.message} onChange={(e) => setNewMessage({ ...newMessage, message: e.target.value })} required></textarea>
 
-                        <div className="stars-selector">
+                        <center><div className="stars-selector">
                             {[1, 2, 3, 4, 5].map((star) => (
-                                <span key={star} className={star <= newMessage.rating ? "selected-star" : ""} onClick={() => handleStarClick(star)}>
-                                    ★
+                                <span
+                                    key={star}
+                                    onClick={() => handleStarClick(star)}
+                                >
+                                    {star <= newMessage.rating ? <FaStar /> : <FaRegStar />}
                                 </span>
                             ))}
-                        </div>
+                        </div></center>
+
 
                         <button type="submit">Envoyer</button>
                     </form>

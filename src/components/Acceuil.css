@@ -1,15 +1,13 @@
-/* Imports des bibliothèques externes */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import '~slick-carousel/slick/slick.css';
 @import '~slick-carousel/slick/slick-theme.css';
 
-/* Reset et styles de base */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+ font-family: 'Arial', 'Segoe UI', 'Noto Sans', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f9f9f9;
@@ -46,7 +44,7 @@ a {
 }
 
 .logo img {
-  height: 80px;
+  height: 100px;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -150,22 +148,23 @@ a {
 
 /* Carousel */
 .carousel {
-  margin: 100px auto 40px;
+  margin: 120px auto 40px;
   max-width: 1200px;
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
 .carousel img {
   width: 100%;
-  height: auto;
+  height: 500px;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s ease;
+  border-radius: 20px;
 }
 
 .carousel .slick-slide:hover img {
-  transform: scale(1.02);
+  transform: scale(1.05);
 }
 
 .slick-dots {
@@ -174,8 +173,8 @@ a {
 
 .slick-dots li button:before {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.7);
-  opacity: 0.7;
+  color: rgba(227, 6, 19, 0.6);
+  opacity: 0.8;
 }
 
 .slick-dots li.slick-active button:before {
@@ -269,9 +268,9 @@ a {
 }
 
 .cta-button {
-  background-color: #e30613;
+  background: linear-gradient(135deg, #e30613, #ff4a5a);
   color: #fff;
-  padding: 1rem 2.8rem;
+  padding: 1rem 3rem;
   border: none;
   border-radius: 50px;
   cursor: pointer;
@@ -281,7 +280,7 @@ a {
   position: relative;
   overflow: hidden;
   z-index: 1;
-  box-shadow: 0 5px 15px rgba(227, 6, 19, 0.3);
+  box-shadow: 0 8px 20px rgba(227, 6, 19, 0.3);
 }
 
 .cta-button::after {
@@ -298,9 +297,8 @@ a {
 }
 
 .cta-button:hover {
-  background-color: #c7051f;
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(227, 6, 19, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(227, 6, 19, 0.4);
 }
 
 .cta-button:hover::after {
@@ -309,7 +307,7 @@ a {
 
 .cta-button:active {
   transform: translateY(-2px);
-  box-shadow: 0 3px 10px rgba(227, 6, 19, 0.3);
+  box-shadow: 0 5px 15px rgba(227, 6, 19, 0.3);
 }
 
 /* Sections générales */
@@ -570,279 +568,160 @@ h3 {
   border-bottom: 1px solid #f5f5f5;
 }
 
-/* Étoiles de notation */
-.stars {
-  margin-top: 15px;
-  font-size: 1.3rem;
-  color: #ffcc00;
-  text-shadow: 0 2px 5px rgba(255, 204, 0, 0.15);
-  letter-spacing: 2px;
-}
-
-/* Animation pour les étoiles */
-@keyframes starPulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-}
-
-.temoignage-box:hover .stars {
-  animation: starPulse 1s ease-in-out infinite;
-}
-
-/* Formulaire d'ajout de témoignage */
-.ajout-temoignage {
-  background: linear-gradient(135deg, #fff, #fafafa);
-  padding: 3rem;
-  border-radius: 20px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.07);
-  position: relative;
-  overflow: hidden;
-}
-
-.ajout-temoignage::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 5px;
-  background: linear-gradient(90deg, #e30613, rgba(227, 6, 19, 0.3));
-}
-
-.ajout-temoignage h2 {
-  margin-bottom: 2.5rem;
-}
-
-.ajout-temoignage form {
-  display: flex;
-  flex-direction: column;
-  max-width: 700px;
-  margin: 0 auto;
-  gap: 20px;
-}
-
-.ajout-temoignage input,
-.ajout-temoignage textarea {
-  padding: 15px 20px;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  background-color: #fff;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
-}
-
-.ajout-temoignage input:focus,
-.ajout-temoignage textarea:focus {
-  border-color: #e30613;
-  outline: none;
-  box-shadow: 0 5px 20px rgba(227, 6, 19, 0.1);
-  transform: translateY(-2px);
-}
-
-.ajout-temoignage textarea {
-  min-height: 150px;
-  resize: vertical;
-}
-
+/* Étoiles (témoignages + formulaire) */
+.stars,
 .stars-selector {
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 15px 0;
+  gap: 6px;
+  align-items: center;
+}
+
+.stars svg {
+  color: #f5c518;
+  font-size: 18px;
 }
 
 .stars-selector span {
   cursor: pointer;
-  font-size: 2rem;
-  transition: all 0.3s ease;
-  color: #ddd;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  font-size: 22px;
+  color: #ccc;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .stars-selector span:hover {
   transform: scale(1.2);
 }
 
-.stars-selector .selected-star {
-  color: #ffcc00;
-  text-shadow: 0 2px 5px rgba(255, 204, 0, 0.2);
+.stars-selector svg {
+  color: #f5c518;
+}
+
+/* Section ajout témoignage */
+.ajout-temoignage {
+  background: #fff;
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06);
+}
+
+.ajout-temoignage form {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ajout-temoignage input,
+.ajout-temoignage textarea {
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: inherit;
+}
+
+.ajout-temoignage textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.ajout-temoignage input:focus,
+.ajout-temoignage textarea:focus {
+  outline: none;
+  border-color: #e30613;
+  box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.15);
 }
 
 .ajout-temoignage button {
-  padding: 15px 30px;
-  background-color: #e30613;
-  color: white;
+  align-self: center;
+  background: linear-gradient(135deg, #e30613, #ff4a5a);
+  color: #fff;
+  padding: 0.9rem 3rem;
   border: none;
   border-radius: 50px;
+  font-size: 1.05rem;
   font-weight: 600;
-  font-size: 1.1rem;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  margin-top: 15px;
-  align-self: center;
   box-shadow: 0 8px 20px rgba(227, 6, 19, 0.3);
-  position: relative;
-  overflow: hidden;
-}
-
-.ajout-temoignage button::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
 }
 
 .ajout-temoignage button:hover {
-  background-color: #c7051f;
-  transform: translateY(-5px);
+  transform: translateY(-3px);
   box-shadow: 0 12px 25px rgba(227, 6, 19, 0.4);
 }
 
-.ajout-temoignage button:hover::after {
-  transform: translateX(0);
-}
-
 .ajout-temoignage button:active {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(227, 6, 19, 0.3);
+  transform: translateY(-1px);
 }
 
 /* Footer */
 .footer {
-  background-color: #fff;
-  color: #333;
+  background: #d93838;
+  color: #ffffff;
+  padding: 3rem 2rem;
   text-align: center;
-  padding: 2.5rem;
-  border-top: 1px solid #eee;
-  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.03);
-  position: relative;
-}
-
-.footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, rgba(227, 6, 19, 0.7), rgba(227, 6, 19, 0));
+  margin-top: 5rem;
 }
 
 .footer p {
-  margin: 5px 0;
-  font-size: 1rem;
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  opacity: 0.85;
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.footer .socials {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
-@keyframes slideIn {
-  from { transform: translateY(30px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+.footer .socials a {
+  color: #eee;
+  font-size: 1.3rem;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
-@keyframes zoomIn {
-  from { transform: scale(0.95); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+.footer .socials a:hover {
+  color: #e30613;
+  transform: translateY(-3px);
 }
 
-[data-aos="fade-up"] {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-[data-aos="fade-up"].aos-animate {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-[data-aos="zoom-in"] {
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-[data-aos="zoom-in"].aos-animate {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Media Queries pour la responsivité */
+/* Responsive global */
 @media (max-width: 992px) {
-  .province-box, .mission-box, .valeur-box, .temoignage-box {
-    flex: 1 1 calc(100% - 2rem);
+  .province-box,
+  .mission-box,
+  .valeur-box,
+  .temoignage-box {
+    flex: 1 1 100%;
   }
-  
+
   .hero h1 {
     font-size: 3rem;
   }
-  
-  section {
-    padding: 2.5rem;
-  }
-}
 
-@media (max-width: 768px) {
-  .header {
-    padding: 0.5rem 1.5rem;
-  }
-
-  .main {
-    padding: 1.5rem;
-  }
-  
-  section {
-    padding: 2rem;
-    margin-bottom: 3rem;
-  }
-  
-  .hero {
-    padding: 3.5rem 1.5rem;
-  }
-  
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-  
-  h2 {
-    font-size: 2rem;
-  }
-  
-  .coupons {
-    padding: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero h1 {
-    font-size: 2rem;
-  }
-  
   .hero h2 {
-    font-size: 1.7rem;
+    font-size: 1.8rem;
   }
-  
+}
+
+@media (max-width: 576px) {
+  .hero {
+    padding: 3rem 1.5rem;
+  }
+
   h2 {
-    font-size: 1.7rem;
+    font-size: 2rem;
   }
-  
-  section {
-    padding: 1.5rem;
+
+  .ajout-temoignage {
+    padding: 2rem 1.5rem;
   }
-  
-  .cta-button {
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
+
+  .carousel img {
+    height: 300px;
   }
 }

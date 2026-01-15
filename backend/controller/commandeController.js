@@ -114,7 +114,7 @@ export const deleteCommande = async (req, res) => {
         if (!commandeExist) return res.status(404).json({ message: "Commande non trouvée." });
 
         await Commande.findByIdAndDelete(id);
-        res.status(200).json({ message: "Commande annulée avec succès." });
+        res.status(200).json({ message: "Commande supprimé avec succès." });
     } catch (error) {
         console.error("Erreur deleteCommande :", error);
         res.status(500).json({ message: "Erreur serveur", error: error.message });

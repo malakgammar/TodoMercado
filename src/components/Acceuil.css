@@ -14,6 +14,7 @@ body {
   color: #333;
   overflow-x: hidden;
   line-height: 1.6;
+  padding-top: 120px; /* hauteur du header */
 }
 
 a {
@@ -27,7 +28,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 3rem;
+  padding: 0.5rem 2rem;
   background-color: rgba(255, 255, 255, 0.98);
   position: fixed;
   width: 100%;
@@ -37,6 +38,21 @@ a {
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
   border-bottom: 1px solid rgba(227, 6, 19, 0.05);
+}
+
+.logout-btn {
+    background: linear-gradient(135deg, #E63946, #F77F88);
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.6rem;
+    border-radius: 40px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(230, 57, 70, 0.35);
 }
 
 .header:hover {

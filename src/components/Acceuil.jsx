@@ -33,7 +33,7 @@ export const Header = () => {
                     <li><Link to="/profile">Profil</Link></li>
                     {user && (
                         <li>
-                            <button onClick={handleLogout} className="btn btn-link logout-btn">
+                            <button onClick={handleLogout} className="btn btn-link logout-btn" >
                                 Déconnexion
                             </button>
                         </li>

@@ -9,7 +9,10 @@
     --dark-gray: #333333;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
+  body {
+    padding-top: 120px; /* hauteur du header */
+}
+
   .auth-card {
     padding: 100px 1rem 2rem; /* Compensation pour le header fixe */
     min-height: 100vh;
